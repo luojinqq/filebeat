@@ -1,15 +1,11 @@
 FROM alpine:3.3
 
-ENV FILEBEAT_VERSION 5.0.0
+ENV FILEBEAT_VERSION 5.0.1
 
 RUN set -x; \
-    apk add --no-cache --virtual build-deps go git make bash \
-    && mkdir -p /go/src/github.com/elastic/beats \
-    && export GOPATH=/go PATH=/go/bin:$PATH \
-    && cd $GOPATH/src/github.com/elastic/beats \
-    && git clone https://github.com/elastic/beats.git . \
-    && git checkout -q v$FILEBEAT_VERSION \
-    && cd filebeat/ && make \
+    apk add --no-cache bash vim \
+    && wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz
+    && tar -xvf filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz
+    && mv filebeat-${FILEBEAT_VERSION}-linux-x86_64 filebeat
+    && cd filebeat/
     && mv filebeat /usr/local/bin \
-    && apk del build-deps \
-    && rm -rf /go
