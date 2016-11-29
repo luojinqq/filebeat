@@ -1,6 +1,6 @@
 FROM alpine:3.3
 
-ENV FILEBEAT_VERSION 1.3.1
+ENV FILEBEAT_VERSION 5.0.0
 
 RUN set -x; \
     apk add --no-cache --virtual build-deps go git make bash \
