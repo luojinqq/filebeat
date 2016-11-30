@@ -9,5 +9,3 @@ RUN set -x; \
     && curl -O -L https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
     && tar -C /usr/local/bin -xvf filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
     && mv filebeat-${FILEBEAT_VERSION}-linux-x86_64 filebeat \
-    && cd filebeat/ \
-    && mv filebeat /usr/local/bin
