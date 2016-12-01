@@ -10,4 +10,4 @@ RUN set -x; \
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && curl -O -L https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
     && tar -C /usr/local/bin -xvf filebeat-${FILEBEAT_VERSION}-linux-x86_64.tar.gz \
-    && cp -r /usr/local/bin/filebeat-${FILEBEAT_VERSION}-linux-x86_64/* /etc/filebeat
+    && mv /usr/local/bin/filebeat-${FILEBEAT_VERSION}-linux-x86_64 /etc/filebeat
